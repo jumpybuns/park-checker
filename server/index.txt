@@ -7,17 +7,15 @@ const cors = require('cors');
 const twilio = require('twilio');
 
 //twilio requirements -- Texting API
-const accountSid = 'AC024ce71342308276feacad3b8636ef4b';
-const authToken = '9a01dd1731815b0945144ff6ba32781c';
+const accountSid = process.env.ACCOUNT_SID;
+const authToken = process.env.AUTH_TOKEN;
 const client = new twilio(accountSid, authToken);
-const _desiredDate = '2022-04-20';
-
 const app = express(); //alias
 
 app.use(cors()); //Blocks browser from restricting any data
 
 app.get('/desired-date', (req, res) => {
-  const { _desiredDate } = req.query;
+  const { _desiredDate, recipient } = req.query;
   function checkForTickets() {
     callTicketAPI(
       'https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ticket&startDate=2022-03-28&endDate=2022-03-30'
@@ -37,7 +35,7 @@ app.get('/desired-date', (req, res) => {
                 ', Park Hopper: ' +
                 ParkHopper,
               from: '+15304297447',
-              to: '+15419999714',
+              to: '+1' + recipient,
             })
             .then((message) => console.log(message.sid));
         } else {
@@ -67,7 +65,7 @@ app.get('/desired-date', (req, res) => {
         });
     });
   }
-  cron.schedule('* * * *  *', function () {
+  cron.schedule('* * * * * *', function () {
     console.log('Check for Tickets: ' + new Date().toLocaleTimeString());
     checkForTickets();
   });
