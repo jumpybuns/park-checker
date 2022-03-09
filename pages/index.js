@@ -20,7 +20,7 @@ const Home = () => {
 
   const checkTix = () => {
     fetch(
-      `http://127.0.0.1:4000/desired-date?&_desiredDate=${_desiredDate}&recipient=${recipient}&oneParkStartDate=${oneParkStartDate}&oneParkEndDate=${oneParkEndDate}&parkHopperStartDate=${parkHopperStartDate}&parkHopperEndDate=${parkHopperEndDate}`
+      `http://127.0.0.1:4000/desired-date?&_desiredDate=${_desiredDate}&recipient=${recipient}&oneParkStartDate=${oneParkStartDate}&oneParkEndDate=${oneParkEndDate}&parkHopperStartDate=${parkHopperStartDate}&parkHopperEndDate=${parkHopperEndDate}&accountSid=${process.env.ACCOUNT_SID}&authToken=${process.env.AUTH_TOKEN}`
     ).catch((err) => console.error(err));
   };
 
@@ -63,8 +63,9 @@ const Home = () => {
       flexDir='column'
       justifyContent='center'
       alignItems='center'
+      my={8}
     >
-      <Heading m={8}>Park Checker</Heading>
+      <Heading mb={8}>Parking Checker</Heading>
 
       <form onSubmit={handleSubmit} name='form' variant='outline'>
         <FormControl isRequired w='64ch'>
@@ -85,7 +86,7 @@ const Home = () => {
               value={oneParkStartDate}
               onChange={handleOneParkStartDate}
             />
-            <Text>{oneParkStartDate}</Text>
+
             <Input
               id='one-park-end'
               type='date'
@@ -94,8 +95,7 @@ const Home = () => {
               value={oneParkEndDate}
               onChange={handleOneParkEndDate}
             />
-            <Text>{oneParkEndDate}</Text>
-            <FormLabel htmlFor='date'>Park Hopper Tickets</FormLabel>
+            <FormLabel htmlFor='park-hopper'>Park Hopper Tickets</FormLabel>
             <Text>
               Guests with a Park Hopper ticket will select the first theme park
               they wish to visit to begin their day; then they can visit the
@@ -103,24 +103,24 @@ const Home = () => {
               (based on availability).
             </Text>
             <Input
-              id='park-hopper-start'
+              id='park-hopper'
               type='date'
               w='auto'
               placeholder='Start Date...'
               value={parkHopperStartDate}
               onChange={handleParkHopperStartDate}
             />
-            <Text>{parkHopperStartDate}</Text>
+
             <Input
-              id='park-hopper-end'
+              id='park-hopper'
               type='date'
               w='auto'
               placeholder='End Date...'
               value={parkHopperEndDate}
               onChange={handleParkHopperEndDate}
             />
-            <Text>{parkHopperEndDate}</Text>
-            <FormLabel htmlFor='date'>Desrired Arrival Date</FormLabel>
+
+            <FormLabel htmlFor='date'>Desired Arrival Date</FormLabel>
             <Input
               id='desired-date'
               type='date'
@@ -144,14 +144,6 @@ const Home = () => {
           </VStack>
         </FormControl>
       </form>
-      <Button
-        as='a'
-        variant='ghost'
-        m={4}
-        href='https://disneyland.disney.go.com/availability-calendar/'
-      >
-        Disney Site
-      </Button>
     </Box>
   );
 };
