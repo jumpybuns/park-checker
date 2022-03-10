@@ -32,9 +32,9 @@ app.get('/desired-date', (req, res) => {
     ).then((OnePark) => {
       console.log('One Park: ', OnePark);
       callTicketAPI(
-        `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ph&startDate=2022-03-28&endDate=2022-03-30`
+        `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ph&startDate=${parkHopperEndDate}&endDate=${parkHopperEndDate}`
       ).then((ParkHopper) => {
-        console.log('Park Hopper: ', ParkHopper, process.env.ACCOUNT_SID);
+        console.log('Park Hopper: ', ParkHopper);
         if (OnePark || ParkHopper) {
           console.log('AVAILABLE BUY YOU SUCKAH!');
           client.messages
@@ -43,11 +43,13 @@ app.get('/desired-date', (req, res) => {
                 'TICKETS ARE AVAILABLE!! One Park: ' +
                 OnePark +
                 ', Park Hopper: ' +
-                ParkHopper,
+                ParkHopper +
+                ' Visit the Reservation Availability Page as soon you can: ' +
+                'https://disneyland.disney.go.com/availability-calendar/',
               from: '+15304297447',
               to: '+1' + recipient,
             })
-            .then((message) => console.log(message.sid));
+            .then((message) => console.log(message.to));
         } else {
           console.log('no tickets available...');
         }
@@ -75,7 +77,7 @@ app.get('/desired-date', (req, res) => {
         });
     });
   }
-  cron.schedule('* * * * * *', function () {
+  cron.schedule('* * * * *', function () {
     console.log('Check for Tickets: ' + new Date().toLocaleTimeString());
     checkForTickets();
   });

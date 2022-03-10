@@ -66,6 +66,11 @@ const Home = () => {
       my={8}
     >
       <Heading mb={8}>Parking Checker</Heading>
+      <Text w='75ch'>
+        Enter the date or dates you are planning to attend Disney Land Theme
+        parks and have get a text update as soon as a space becomes avail!
+        Available parking spots suddenly open up all the time so miss out.
+      </Text>
 
       <form onSubmit={handleSubmit} name='form' variant='outline'>
         <FormControl isRequired w='64ch'>
