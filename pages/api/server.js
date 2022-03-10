@@ -32,7 +32,7 @@ app.get('/desired-date', (req, res) => {
     ).then((OnePark) => {
       console.log('One Park: ', OnePark);
       callTicketAPI(
-        `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ph&startDate=${parkHopperEndDate}&endDate=${parkHopperEndDate}`
+        `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ph&startDate=${parkHopperStartDate}&endDate=${parkHopperEndDate}`
       ).then((ParkHopper) => {
         console.log('Park Hopper: ', ParkHopper);
         if (OnePark || ParkHopper) {
