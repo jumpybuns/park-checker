@@ -30,7 +30,7 @@ app.get('/desired-date', (req, res) => {
     callTicketAPI(
       `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ticket&startDate=${oneParkStartDate}&endDate=${oneParkEndDate}`
     ).then((OnePark) => {
-      console.log('One Park: ', OnePark);
+      console.log('One Park: ', OnePark, accountSid);
       callTicketAPI(
         `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ph&startDate=${parkHopperStartDate}&endDate=${parkHopperEndDate}`
       ).then((ParkHopper) => {
@@ -77,7 +77,7 @@ app.get('/desired-date', (req, res) => {
         });
     });
   }
-  cron.schedule('* * * * *', function () {
+  cron.schedule('* * * * * *', function () {
     console.log('Check for Tickets: ' + new Date().toLocaleTimeString());
     checkForTickets();
   });
