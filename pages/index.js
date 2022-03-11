@@ -8,7 +8,8 @@ import {
   Heading,
   VStack,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import LoginModal from '../components/LoginModal';
+import React, { useState, useEffect } from 'react';
 
 const Home = () => {
   const [recipient, setRecipient] = useState('');
@@ -65,18 +66,20 @@ const Home = () => {
       alignItems='center'
       my={8}
     >
+      <LoginModal />
       <Heading mb={8}>Parking Checker</Heading>
       <Text w='75ch'>
+        Get SMS Text updates whenever your chosen parking spot is available.
         Enter the date or dates you are planning to attend Disney Land Theme
         parks and have get a text update as soon as a space becomes avail!
         Available parking spots suddenly open up all the time so miss out.
       </Text>
 
       <form onSubmit={handleSubmit} name='form' variant='outline'>
-        <FormControl isRequired w='64ch'>
+        <FormControl isRequired w='75ch'>
           <VStack spacing={6}>
             <FormLabel htmlFor='date'>One Park Tickets</FormLabel>
-            <Text w='64ch'>
+            <Text>
               To enter one of the parks, each Guest is required to have a theme
               park reservation in addition to a valid ticket for the same park
               on the same date. Please check below to see if your desired date
