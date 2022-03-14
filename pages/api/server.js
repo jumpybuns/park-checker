@@ -30,7 +30,7 @@ app.get('/desired-date', (req, res) => {
     callTicketAPI(
       `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ticket&startDate=${oneParkStartDate}&endDate=${oneParkEndDate}`
     ).then((OnePark) => {
-      console.log('One Park: ', OnePark, accountSid);
+      console.log('One Park: ', OnePark);
       callTicketAPI(
         `https://disneyland.disney.go.com/availability-calendar/api/calendar?segment=ph&startDate=${parkHopperStartDate}&endDate=${parkHopperEndDate}`
       ).then((ParkHopper) => {

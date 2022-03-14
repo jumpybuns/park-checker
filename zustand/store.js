@@ -3,8 +3,10 @@ import { persist } from 'zustand/middleware';
 
 export const useDateStore = create(
   persist((set) => ({
-    desiredDate: '',
-    setDesiredDate: (desiredDate) => set({ desiredDate }),
+    _desiredDate: '',
+    setDesiredDate: (_desiredDate) => set({ _desiredDate }),
+    oneParkEndDate: '',
+    setOneParkEndDate: (oneParkEndDate) => set({ oneParkEndDate }),
     removeDesiredDate: () => set({}, true),
   }))
 );

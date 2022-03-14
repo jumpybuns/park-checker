@@ -13,7 +13,7 @@ const Header = () => (
     px={6}
   >
     <Link href='/' passHref>
-      <Heading ml={12} _hover={{ cursor: 'pointer' }}>
+      <Heading mx={4} _hover={{ cursor: 'pointer' }}>
         PC
       </Heading>
     </Link>
