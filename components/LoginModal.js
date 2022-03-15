@@ -14,6 +14,7 @@ import {
   FormHelperText,
   Input,
   VStack,
+  Box,
 } from '@chakra-ui/react';
 import { useEffect } from 'react';
 
@@ -31,6 +32,7 @@ const LoginModal = () => {
         onClose={onClose}
         isCentered
         motionPreset='slideInBottom'
+        mx={4}
       >
         <ModalOverlay
           bg='blackAlpha.300'
@@ -45,11 +47,11 @@ const LoginModal = () => {
             <VStack align='flex-start'>
               <Text>
                 Are you tired of refreshing your browser all day just to find a
-                spot to park on your vacation to Disneyland? Well this is the
-                service for you. Spend that time packing and getting ready to go
-                and wait for the text alert on your phone to let you know when a
-                spot opens up. Parking spots open up all the time! But they also
-                go very quickly so do not miss out!
+                spot to park at Disneyland? Well this is the service for you.
+                Spend that time packing and wrangling your family and let our
+                site let you know via SMS text when a spot opens up. Parking
+                spots can open up at any time but they also go very quickly so
+                do not miss out!
               </Text>
               <FormControl>
                 <FormLabel htmlFor='email'>Email address</FormLabel>
