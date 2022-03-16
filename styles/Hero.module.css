@@ -1,0 +1,16 @@
+.container {
+  overflow: hidden;
+}
+
+.car {
+  animation: move 2s cubic-bezier(1, 0.58, 0.67, 1);
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
