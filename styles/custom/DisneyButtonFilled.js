@@ -17,9 +17,9 @@ const DisneyButtonFilled = ({ text, onClick }) => {
       transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
       onClick={() => onClick()}
       _hover={{
-        bgColor: 'blue.600',
+        bgColor: 'blue.400',
         cursor: 'pointer',
-        borderColor: 'blue.600',
+        borderColor: 'blue.400',
       }}
     >
       {text}

@@ -42,9 +42,11 @@ const Main = () => {
         status: 'success',
         duration: 9000,
         isClosable: true,
-        onCloseComplete: () => router.push('/thankyou'),
       });
     }
+    setTimeout(() => {
+      router.push('/thankyou');
+    }, 10000);
   };
 
   const handleDesiredDate = (event) => {
@@ -94,7 +96,7 @@ const Main = () => {
                 <FormLabel htmlFor='recipient'>Your Phone Number</FormLabel>
                 <Input
                   id='recipient'
-                  placeholder='Phone number...'
+                  placeholder='000-000-0000'
                   w='auto'
                   value={recipient}
                   type='text'

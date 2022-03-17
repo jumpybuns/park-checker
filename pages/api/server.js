@@ -45,9 +45,10 @@ app.get('/desired-date', (req, res) => {
                 ', Park Hopper: ' +
                 ParkHopper +
                 ' Visit the Reservation Availability Page as soon you can: ' +
-                'https://disneyland.disney.go.com/availability-calendar/' +
-                'or you can cancel the service by visiting our homepage' +
-                'https://park-checker-d92305f6h-jumpybuns.vercel.app/',
+                'https://disneyland.disney.go.com/guest-services/parking/' +
+                'Text the word STOP or' +
+                'or you can cancel the service by visiting our website' +
+                'https://park-checker.vercel.app/',
               from: '+15304297447',
               to: '+1' + recipient,
             })

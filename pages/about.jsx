@@ -20,7 +20,7 @@ const About = () => {
         <VStack spacing={4}>
           <Heading>About Our Site</Heading>
           <Text fontWeight='semibold'>Easy to use service</Text>
-          <Text pb={8}>
+          <Text w={{ md: '72ch' }} pb={8}>
             Let&apos;s face it. Going on vacation is stressful enough and
             getting a good parking spot can make your whole day easier. We
             created this easy to use service to help Guests relax and the

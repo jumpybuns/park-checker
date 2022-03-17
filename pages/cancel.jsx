@@ -21,6 +21,9 @@ const Cancel = () => {
         isClosable: true,
       });
     }
+    setTimeout(() => {
+      router.push('/');
+    }, 3000);
   };
 
   return (
@@ -39,6 +42,7 @@ const Cancel = () => {
             Click Here to Cancel Your Subscription
           </Text>
           <DisneyButtonOutline text='Cancel' onClick={stopTix} />
+          <Text>Or</Text>
           <DisneyButtonFilled onClick={() => router.back()} text='Go Back' />
         </VStack>
       </Box>
