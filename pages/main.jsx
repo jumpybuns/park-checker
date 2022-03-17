@@ -31,7 +31,7 @@ const Main = () => {
   const checkTix = () => {
     const id = 'test-id';
     fetch(
-      `http://127.0.0.1:4000/desired-date?&_desiredDate=${_desiredDate}&recipient=${recipient}&oneParkStartDate=${oneParkStartDate}&oneParkEndDate=${oneParkEndDate}&parkHopperStartDate=${parkHopperStartDate}&parkHopperEndDate=${parkHopperEndDate}&accountSid=${process.env.ACCOUNT_SID}&authToken=${process.env.AUTH_TOKEN}&stop=${stop}`
+      `https://park-checker.vercel.app/desired-date?&_desiredDate=${_desiredDate}&recipient=${recipient}&oneParkStartDate=${oneParkStartDate}&oneParkEndDate=${oneParkEndDate}&parkHopperStartDate=${parkHopperStartDate}&parkHopperEndDate=${parkHopperEndDate}&accountSid=${process.env.ACCOUNT_SID}&authToken=${process.env.AUTH_TOKEN}&stop=${stop}`
     ).catch((err) => console.error(err));
     if (!toast.isActive(id)) {
       toast({

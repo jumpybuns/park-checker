@@ -10,7 +10,9 @@ const Cancel = () => {
 
   const stopTix = () => {
     const id = 'toast-id';
-    fetch('http://127.0.0.1:4000/stop').catch((err) => console.error(err));
+    fetch('https://park-checker.vercel.app/stop').catch((err) =>
+      console.error(err)
+    );
     if (!toast.isActive(id)) {
       toast({
         id,
