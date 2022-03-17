@@ -89,12 +89,13 @@ const Home = () => {
           <Box textStyle='h1' textAlign='center' pt={4}>
             California Theme Park Parking Checker
           </Box>
-          <Text>
+          <Text w={{ md: '72ch' }}>
             Are you tired of refreshing your browser all day just to find a spot
-            to park at Disneyland? Well this is the service for you. Spend that
-            time packing and wrangling your family and let our site let you know
-            via SMS text when a spot opens up. Parking spots can open up at any
-            time but they also go very quickly so do not miss out!
+            to park at Disneyland Theme Parks? Well this is the service for you.
+            Spend that time packing and wrangling your family and let our site
+            let you know via SMS text when a spot opens up. Parking spots can
+            open up at any time but they also go very quickly so do not miss
+            out!
           </Text>
           <Text>
             Please sign in to continue! <br />

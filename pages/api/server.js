@@ -10,6 +10,8 @@ const app = express(); //alias
 
 app.use(cors()); //Blocks browser from restricting any data
 
+let task = '';
+
 app.get('/desired-date', (req, res) => {
   const {
     _desiredDate,
@@ -78,10 +80,22 @@ app.get('/desired-date', (req, res) => {
     });
   }
 
-  const task = cron.schedule('* * * * * *', function () {
+  task = cron.schedule('* * * * * *', function () {
     console.log('Check for Tickets: ' + new Date().toLocaleTimeString());
     console.log('CONSOLE', stop);
     checkForTickets();
+  });
+
+  return res.send({
+    message: 'Cron Started',
+  });
+});
+
+app.get('/stop', (req, res) => {
+  task.stop();
+
+  return res.send({
+    message: 'Cron Stopped',
   });
 });
 

@@ -4,7 +4,7 @@ import {
   Input,
   FormControl,
   FormLabel,
-  Button,
+  useToast,
   Heading,
   VStack,
 } from '@chakra-ui/react';
@@ -13,9 +13,9 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import DisneyButtonFilled from '../styles/custom/DisneyButtonFilled';
 import DisneyButtonOutline from '../styles/custom/DisneyButtonOutline';
-const today = new Date().toISOString().split('T').shift();
 import { useRouter } from 'next/router';
-import AbortController from 'abort-controller';
+
+const today = new Date().toISOString().split('T').shift();
 
 const Main = () => {
   const [recipient, setRecipient] = useState('');
@@ -24,23 +24,27 @@ const Main = () => {
   const [oneParkEndDate, setOneParkEndDate] = useState(_desiredDate);
   const [parkHopperStartDate, setParkHopperStartDate] = useState(_desiredDate);
   const [parkHopperEndDate, setParkHopperEndDate] = useState(_desiredDate);
-  const [stop, setStop] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
-  const controller = new AbortController();
-  const signal = controller.signal;
+  const toast = useToast();
 
   const checkTix = () => {
+    const id = 'test-id';
     fetch(
-      `http://127.0.0.1:4000/desired-date?&_desiredDate=${_desiredDate}&recipient=${recipient}&oneParkStartDate=${oneParkStartDate}&oneParkEndDate=${oneParkEndDate}&parkHopperStartDate=${parkHopperStartDate}&parkHopperEndDate=${parkHopperEndDate}&accountSid=${process.env.ACCOUNT_SID}&authToken=${process.env.AUTH_TOKEN}&stop=${stop}`,
-      {
-        signal,
-      }
+      `http://127.0.0.1:4000/desired-date?&_desiredDate=${_desiredDate}&recipient=${recipient}&oneParkStartDate=${oneParkStartDate}&oneParkEndDate=${oneParkEndDate}&parkHopperStartDate=${parkHopperStartDate}&parkHopperEndDate=${parkHopperEndDate}&accountSid=${process.env.ACCOUNT_SID}&authToken=${process.env.AUTH_TOKEN}&stop=${stop}`
     ).catch((err) => console.error(err));
-  };
-
-  const handleAbort = () => {
-    setStop(true);
+    if (!toast.isActive(id)) {
+      toast({
+        id,
+        title: 'Service started.',
+        description:
+          'We will notify you vis SMS text when a parking spot become available.',
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+        onCloseComplete: () => router.push('/thankyou'),
+      });
+    }
   };
 
   const handleDesiredDate = (event) => {
@@ -100,7 +104,6 @@ const Main = () => {
                   text='Check for Tickets'
                   onClick={checkTix}
                 />
-                <Button onClick={handleAbort}>STOPPP</Button>
               </VStack>
             </FormControl>
           </Box>

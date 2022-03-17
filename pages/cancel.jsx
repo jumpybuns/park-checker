@@ -1,23 +1,26 @@
-import { Box, Text, Input, VStack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, Text, useToast, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import DisneyButtonOutline from '../styles/custom/DisneyButtonOutline';
 import DisneyButtonFilled from '../styles/custom/DisneyButtonFilled';
-import AbortController from 'abort-controller';
 
 const Cancel = () => {
-  const [recipient, setRecipient] = useState('');
-  const controller = new AbortController();
-  const signal = controller.signal;
   const router = useRouter();
+  const toast = useToast();
 
-  const deleteTix = () => {
-    fetch(`http://127.0.0.1:4000/desired-date`, {
-      method: 'get',
-      signal: signal,
-    }).catch((err) => console.error(err));
-    controller.abort();
+  const stopTix = () => {
+    const id = 'toast-id';
+    fetch('http://127.0.0.1:4000/stop').catch((err) => console.error(err));
+    if (!toast.isActive(id)) {
+      toast({
+        id,
+        title: 'Service canceled.',
+        description: "We've canceled our service for you.",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -35,15 +38,7 @@ const Cancel = () => {
           <Text className='text-content'>
             Click Here to Cancel Your Subscription
           </Text>
-          {/* <Input
-            id='recipient'
-            placeholder='Phone number...'
-            w='auto'
-            value={recipient}
-            type='text'
-            onChange={(event) => setRecipient(event.target.value)}
-          /> */}
-          <DisneyButtonOutline text='Cancel' onClick={deleteTix} />
+          <DisneyButtonOutline text='Cancel' onClick={stopTix} />
           <DisneyButtonFilled onClick={() => router.back()} text='Go Back' />
         </VStack>
       </Box>
