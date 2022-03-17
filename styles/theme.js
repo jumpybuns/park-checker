@@ -2,19 +2,24 @@ import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
   components: {},
+  colors: {
+    darkBlue: '#12224e',
+  },
+  fonts: {
+    heading: 'Roboto',
+    body: 'Noto Sans',
+  },
   styles: {
     global: {
-      // styles for the `body`
-      body: {
-        fonts: {
-          body: 'system-ui, sans-serif',
-          heading: 'Nunito',
-          mono: 'Menlo, monospace',
-          color: 'gray.900',
-        },
-        bg: 'whiteAlpha.900',
-        color: 'gray.900',
-      },
+      bg: 'whiteAlpha.900',
+      color: 'gray.900',
+    },
+  },
+  textStyles: {
+    h1: {
+      fontSize: ['4xl'],
+      fontWeight: 'bold',
+      lineHeight: '110%',
     },
   },
 });

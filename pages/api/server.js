@@ -6,9 +6,6 @@ const express = require('express');
 const cors = require('cors');
 const twilio = require('twilio');
 
-//twilio requirements -- Texting API
-// const accountSid = 'AC024ce71342308276feacad3b8636ef4b';
-// const authToken = '9a01dd1731815b0945144ff6ba32781c';
 const app = express(); //alias
 
 app.use(cors()); //Blocks browser from restricting any data
@@ -23,6 +20,7 @@ app.get('/desired-date', (req, res) => {
     parkHopperEndDate,
     accountSid,
     authToken,
+    stop,
   } = req.query;
 
   const client = new twilio(accountSid, authToken);
@@ -45,7 +43,9 @@ app.get('/desired-date', (req, res) => {
                 ', Park Hopper: ' +
                 ParkHopper +
                 ' Visit the Reservation Availability Page as soon you can: ' +
-                'https://disneyland.disney.go.com/availability-calendar/',
+                'https://disneyland.disney.go.com/availability-calendar/' +
+                'or you can cancel the service by visiting our homepage' +
+                'https://park-checker-d92305f6h-jumpybuns.vercel.app/',
               from: '+15304297447',
               to: '+1' + recipient,
             })
@@ -77,8 +77,10 @@ app.get('/desired-date', (req, res) => {
         });
     });
   }
-  cron.schedule('* * * * * *', function () {
+
+  const task = cron.schedule('* * * * * *', function () {
     console.log('Check for Tickets: ' + new Date().toLocaleTimeString());
+    console.log('CONSOLE', stop);
     checkForTickets();
   });
 });
@@ -87,7 +89,5 @@ app.get('/desired-date', (req, res) => {
 app.get('/', (req, res) => {
   res.send('Welcome to the Express Server');
 });
-
-app.get('/');
 
 app.listen(4000, () => console.log('Running on Port 4000'));

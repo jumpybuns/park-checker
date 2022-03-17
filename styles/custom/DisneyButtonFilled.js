@@ -1,10 +1,9 @@
 import { Button } from '@chakra-ui/react';
 
-const DisneyButtonFilled = ({ text, href }) => {
+const DisneyButtonFilled = ({ text, onClick }) => {
   return (
     <Button
       w={52}
-      href={href}
       as='a'
       display='flex'
       justifyContent='center'
@@ -16,6 +15,7 @@ const DisneyButtonFilled = ({ text, href }) => {
       shadow='md'
       color='whiteAlpha.900'
       transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+      onClick={() => onClick()}
       _hover={{
         bgColor: 'blue.600',
         cursor: 'pointer',

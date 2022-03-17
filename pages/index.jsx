@@ -1,11 +1,19 @@
-import { Box, Text, Button, Heading, VStack } from '@chakra-ui/react';
+import { Box, Text, Button, Heading, VStack, Image } from '@chakra-ui/react';
 import DisneyButtonFilled from '../styles/custom/DisneyButtonFilled';
 import DisneyButtonOutline from '../styles/custom/DisneyButtonOutline';
-import Hero from '../styles/custom/Hero';
+import Hero from '../components/Hero.jsx';
+import Blob from '../components/Blob';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const Home = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleHome = () => {
+    router.push('/main');
+  };
+
   if (session) {
     return (
       <Box
@@ -15,18 +23,38 @@ const Home = () => {
         display='flex'
         flexDir='column'
         alignItems='center'
-        bg='whiteAlpha.900'
-        color='gray.800'
+        color='whiteAlpha.900'
+        bgGradient='linear(gray.900 0%, blue.900 20%)'
       >
+        <Heading
+          pos='absolute'
+          top={2}
+          left={2}
+          mx={4}
+          color='whiteAlpha.900'
+          _hover={{ cursor: 'pointer' }}
+        >
+          PC
+        </Heading>
+        <Blob />
         <Hero />
-        <VStack spacing={4}>
-          <Heading>California Theme Park Parking Checker</Heading>
-
+        <VStack
+          spacing={4}
+          display='flex'
+          alignItems='center'
+          justifyContent='center'
+          alignContent='center'
+          textAlign='center'
+          zIndex={2}
+        >
+          <Box textStyle='h1' pt={4}>
+            California Theme Park Parking Checker
+          </Box>
           <Text>
             You are signed in as {session.user.email} <br />
           </Text>
           <Text>Click here to continue to Parking Checker</Text>
-          <DisneyButtonFilled href='/main' text='Home' />
+          <DisneyButtonFilled onClick={handleHome} text='Home' />
           <Text>Or</Text>
           <DisneyButtonOutline text='Sign Out' onClick={signOut} />
         </VStack>
@@ -42,12 +70,25 @@ const Home = () => {
         display='flex'
         flexDir='column'
         alignItems='center'
-        bg='whiteAlpha.900'
-        color='gray.800'
+        color='whiteAlpha.900'
+        bgGradient='linear(gray.900 0%, blue.900 20%)'
       >
+        <Heading
+          pos='absolute'
+          top={2}
+          left={2}
+          mx={4}
+          color='whiteAlpha.900'
+          _hover={{ cursor: 'pointer' }}
+        >
+          PC
+        </Heading>
+        <Blob />
         <Hero />
-        <VStack spacing={4}>
-          <Heading>California Theme Park Parking Checker</Heading>
+        <VStack spacing={4} zIndex={2}>
+          <Box textStyle='h1' textAlign='center' pt={4}>
+            California Theme Park Parking Checker
+          </Box>
           <Text>
             Are you tired of refreshing your browser all day just to find a spot
             to park at Disneyland? Well this is the service for you. Spend that

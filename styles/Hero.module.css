@@ -8,9 +8,11 @@
 
 @keyframes move {
   0% {
-    transform: translateX(-200px);
+    transform: translateX(-500px);
+    z-index: 2;
   }
   100% {
     transform: translateX(0);
+    z-index: 2;
   }
 }

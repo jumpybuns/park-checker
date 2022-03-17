@@ -34,13 +34,13 @@ const Header = () => (
       color='whiteAlpha.900'
     >
       <ListItem>
-        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/main'>Home</NavLink>
       </ListItem>
       <ListItem>
         <NavLink to='/about'>About</NavLink>
       </ListItem>
       <ListItem>
-        <NavLink to='/contact'>Contact</NavLink>
+        <NavLink to='/cancel'>Cancel</NavLink>
       </ListItem>
     </UnorderedList>
   </Box>

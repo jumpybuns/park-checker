@@ -9,10 +9,10 @@ const DisneyButtonOutline = ({ text, onClick }) => {
       justifyContent='center'
       textAlign='center'
       borderRadius={50}
-      borderColor='blue.500'
+      borderColor='blue.800'
       border='2px'
       bg='whiteAlpha.900'
-      color='blue.500'
+      color='blue.900'
       shadow='md'
       transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
       onClick={() => onClick()}
