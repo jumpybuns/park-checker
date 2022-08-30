@@ -1,6 +1,5 @@
-import { Box, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Text, VStack } from '@chakra-ui/react';
 import { signOut } from 'next-auth/react';
-import { useEffect } from 'react';
 import Header from '../components/Header';
 import { useRouter } from 'next/router';
 import DisneyButtonFilled from '../styles/custom/DisneyButtonFilled';

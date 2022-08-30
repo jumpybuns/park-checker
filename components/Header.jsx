@@ -1,15 +1,7 @@
 import React from "react";
-import {
-	Box,
-	UnorderedList,
-	ListItem,
-	Image,
-	Heading,
-	Button,
-} from "@chakra-ui/react";
+import { Box, UnorderedList, ListItem, Heading } from "@chakra-ui/react";
 import NavLink from "../styles/custom/NavLink";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 const Header = () => (
 	<Box
